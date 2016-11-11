@@ -73,8 +73,7 @@ class AddItemVC: UIViewController, UITextFieldDelegate {
             
             item.totalDays = 0
             item.totalSales = 0
-//            itemCount += 1
-//            mainVC.emptyTableMessage?.isHidden = false
+
             ad.saveContext()
             alertMessage.isHidden = true
             dismiss(animated: true, completion: nil)

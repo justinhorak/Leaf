@@ -64,26 +64,29 @@ class MainVC: UIViewController {
     
     
     @IBAction func swipeLeft(_ sender: UISwipeGestureRecognizer) {
-        let alertController: UIAlertController = UIAlertController(title: "Delete \((itemToEdit!.title)!) ?", message: "Deleting this product will also delete its data.", preferredStyle: .alert)
+        let noScale = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
+        let noScaleView = SCLAlertView(appearance: noScale)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {(action:UIAlertAction) in
-            
-            //Do Nothing
-        }
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) {(action:UIAlertAction) in
+        noScaleView.addButton("Delete"){ () -> Void  in
             if self.itemToEdit != nil{
                 context.delete(self.itemToEdit)
                 ad.saveContext()
                 self.dismiss(animated: true, completion: nil)
             }
+            
         }
         
-        alertController.addAction(cancelAction)
-        alertController.addAction(deleteAction)
+        noScaleView.addButton("Cancel"){ () -> Void  in
+            self.no()
+            
+        }
         
-        self.present(alertController, animated: true, completion: nil)
+        noScaleView.showError("Delete \((itemToEdit!.title)!) ?", subTitle: "Deleting this product will also delete its data.")
         
-        print("Delete")
+        
+        
     }
     
     @IBAction func swipeUp(_ sender: UISwipeGestureRecognizer) {
