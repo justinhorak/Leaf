@@ -45,6 +45,7 @@
 		D05C54291DD38D9F0040F990 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05C54281DD38D9F0040F990 /* MenuVC.swift */; };
 		D05C542C1DD3D9390040F990 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05C542A1DD3D9390040F990 /* Item+CoreDataClass.swift */; };
 		D05C542D1DD3D9390040F990 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05C542B1DD3D9390040F990 /* Item+CoreDataProperties.swift */; };
+		D070CD241DD6BCA7003A1DB2 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D070CD231DD6BCA7003A1DB2 /* SignInVC.swift */; };
 		D0B47DFD1DD1078A0075676B /* ScalingBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B47DFC1DD1078A0075676B /* ScalingBrain.swift */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		D05C54281DD38D9F0040F990 /* MenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuVC.swift; path = ../MenuVC.swift; sourceTree = "<group>"; };
 		D05C542A1DD3D9390040F990 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Item+CoreDataClass.swift"; path = "../Item+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D05C542B1DD3D9390040F990 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Item+CoreDataProperties.swift"; path = "../Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D070CD231DD6BCA7003A1DB2 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		D0B47DFC1DD1078A0075676B /* ScalingBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalingBrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -234,6 +236,7 @@
 		D027073D1DCED09200BB06AE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D070CD231DD6BCA7003A1DB2 /* SignInVC.swift */,
 				D027070B1DCE9B9500BB06AE /* ViewController.swift */,
 				D02707351DCED01600BB06AE /* AddItemVC.swift */,
 				D02707201DCEBD1000BB06AE /* MainVC.swift */,
@@ -420,6 +423,7 @@
 				D027071F1DCEBC9600BB06AE /* MaterialView.swift in Sources */,
 				D04477D51DD4FDAA00ED8F40 /* SCLAlertView.swift in Sources */,
 				D02707861DCED83600BB06AE /* JiroTextField.swift in Sources */,
+				D070CD241DD6BCA7003A1DB2 /* SignInVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

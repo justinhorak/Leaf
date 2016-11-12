@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2Xy-HQ-6fv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="P0r-pO-Z3q">
     <dependencies>
         <deployment version="2304" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -30,7 +30,7 @@
                         <viewControllerLayoutGuide type="bottom" id="t86-fL-vgp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="e3j-6B-93p">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 9" translatesAutoresizingMaskIntoConstraints="NO" id="AL7-hu-ZdS"/>
@@ -89,7 +89,7 @@
                         <viewControllerLayoutGuide type="bottom" id="BRI-gH-yCe"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="r2u-FR-pG5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -107,7 +107,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yz3-ar-vda">
@@ -147,10 +147,10 @@
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="80" id="MQe-Hm-Vfz" customClass="ItemCell" customModule="Leaf" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MQe-Hm-Vfz" id="pPE-dJ-hD5">
-                                            <frame key="frameInset" width="375" height="80"/>
+                                            <frame key="frameInset" width="414" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oaQ-r0-zGz">
@@ -252,6 +252,102 @@
             </objects>
             <point key="canvasLocation" x="605.60000000000002" y="132.68365817091455"/>
         </scene>
+        <!--Sign InVC-->
+        <scene sceneID="jKO-yf-sL2">
+            <objects>
+                <viewController id="P0r-pO-Z3q" customClass="SignInVC" customModule="Leaf" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="h9L-eN-pzG"/>
+                        <viewControllerLayoutGuide type="bottom" id="v04-dy-3xd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mbU-Vh-Ce3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCy-AS-8mR">
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9X9-9p-Yce" customClass="HoshiTextField" customModule="Leaf" customModuleProvider="target">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="XXt-Bb-SBO"/>
+                                </constraints>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                        <color key="value" red="0.0" green="0.78437054159999997" blue="0.621401906" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.0" green="0.78437054159999997" blue="0.621401906" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                        <real key="value" value="0.80000000000000004"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pRr-Iv-izi" customClass="HoshiTextField" customModule="Leaf" customModuleProvider="target">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="GvR-ap-AQV"/>
+                                </constraints>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Light" family="SF UI Display" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderInactiveColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                        <color key="value" red="0.0" green="0.78437054159999997" blue="0.621401906" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.0" green="0.78437054159999997" blue="0.621401906" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
+                                        <real key="value" value="0.80000000000000004"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DWY-nH-CIg">
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="signInTapped:" destination="P0r-pO-Z3q" eventType="touchUpInside" id="mSt-i0-ZsA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pRr-Iv-izi" firstAttribute="top" secondItem="9X9-9p-Yce" secondAttribute="bottom" constant="7.3333333333333428" id="6vg-O2-XN3"/>
+                            <constraint firstItem="pRr-Iv-izi" firstAttribute="trailing" secondItem="mbU-Vh-Ce3" secondAttribute="trailingMargin" id="Bbl-nq-29o"/>
+                            <constraint firstItem="9X9-9p-Yce" firstAttribute="trailing" secondItem="mbU-Vh-Ce3" secondAttribute="trailingMargin" id="C8Z-kG-247"/>
+                            <constraint firstItem="9X9-9p-Yce" firstAttribute="top" secondItem="yCy-AS-8mR" secondAttribute="bottom" constant="100" id="Lh8-vf-4WT"/>
+                            <constraint firstItem="yCy-AS-8mR" firstAttribute="top" secondItem="h9L-eN-pzG" secondAttribute="bottom" constant="8" id="Qeo-4Q-liF"/>
+                            <constraint firstItem="DWY-nH-CIg" firstAttribute="trailing" secondItem="mbU-Vh-Ce3" secondAttribute="trailingMargin" id="YFL-fI-LFI"/>
+                            <constraint firstItem="DWY-nH-CIg" firstAttribute="leading" secondItem="mbU-Vh-Ce3" secondAttribute="leadingMargin" id="bVj-uF-gV9"/>
+                            <constraint firstItem="DWY-nH-CIg" firstAttribute="top" secondItem="pRr-Iv-izi" secondAttribute="bottom" constant="16" id="nxc-oY-I6C"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yCy-AS-8mR" secondAttribute="trailing" id="sRM-JO-Hn0"/>
+                            <constraint firstItem="9X9-9p-Yce" firstAttribute="leading" secondItem="mbU-Vh-Ce3" secondAttribute="leadingMargin" id="v8v-wA-DIU"/>
+                            <constraint firstItem="yCy-AS-8mR" firstAttribute="leading" secondItem="mbU-Vh-Ce3" secondAttribute="leadingMargin" id="wva-aj-LYJ"/>
+                            <constraint firstItem="pRr-Iv-izi" firstAttribute="leading" secondItem="mbU-Vh-Ce3" secondAttribute="leadingMargin" id="yNp-gY-4Rx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="email" destination="9X9-9p-Yce" id="u4x-Fb-WHt"/>
+                        <outlet property="password" destination="pRr-Iv-izi" id="rB9-ok-l4q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tVP-x4-qiV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="188.40579710144928" y="1439.6739130434785"/>
+        </scene>
         <!--MainVC-->
         <scene sceneID="4Ee-M9-N2n">
             <objects>
@@ -261,7 +357,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Tot-sU-vOy"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Zsw-Tv-vx9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MAIN BACKGROUND-1" translatesAutoresizingMaskIntoConstraints="NO" id="MXI-hJ-Gu8"/>
@@ -625,7 +721,7 @@
                         <viewControllerLayoutGuide type="bottom" id="L7Y-fT-OEt"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="I11-dC-xG8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MAIN BACKGROUND-1" translatesAutoresizingMaskIntoConstraints="NO" id="M2l-GA-zIZ"/>
@@ -746,7 +842,7 @@
                         <viewControllerLayoutGuide type="bottom" id="t3w-qH-PlH"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="JNl-jj-jly">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 9" translatesAutoresizingMaskIntoConstraints="NO" id="cdv-0D-8gx"/>
