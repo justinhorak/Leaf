@@ -78,10 +78,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let post = products[indexPath.row]
-        print("Justin: \(post.title)")
-        return tableView.dequeueReusableCell(withIdentifier: "ItemCell")!
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell") as? ItemCell{
+            cell.configureCell(product: post)
+            return cell
+        }else{
+            return ItemCell()
+        }
+
     }
     
     

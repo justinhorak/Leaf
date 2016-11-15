@@ -10,12 +10,19 @@ import UIKit
 
 class ItemCell: UITableViewCell {
 
+    
+    var product: Product!
+    
     @IBOutlet weak var title: UILabel!
     
     
-    func configureCell(item: Item){
-        title.text = item.title?.uppercased()
-        
+    
+    
+    
+    func configureCell(product: Product){
+        self.product = product
+        self.title.text = product.title
+        title.text = product.title.uppercased()
         
     }
     
