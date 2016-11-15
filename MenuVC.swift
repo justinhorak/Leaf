@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import SwiftKeychainWrapper
 
 class MenuVC: UIViewController {
 
@@ -32,5 +34,10 @@ class MenuVC: UIViewController {
     @IBAction func accountButtonPressed(_ sender: UIButton) {
     }
     @IBAction func signOutButtonPressed(_ sender: UIButton) {
+        let keychainResult = KeychainWrapper.defaultKeychainWrapper.remove(key: KEY_UID)
+        print("JESS: ID removed from keychain \(keychainResult)")
+        try! FIRAuth.auth()?.signOut()
+        performSegue(withIdentifier: "isSignedOut", sender: nil)
+        
     }
 }

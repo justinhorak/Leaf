@@ -15,15 +15,24 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 9" translatesAutoresizingMaskIntoConstraints="NO" id="ENB-Ui-eER"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="bsn-5C-G6q">
+                                <frame key="frameInset" minX="67" minY="101" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="7hb-JH-4H8"/>
+                                    <constraint firstAttribute="width" constant="240" id="gkl-sN-QaD"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ENB-Ui-eER" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="2Vp-es-Hk5"/>
                             <constraint firstItem="ENB-Ui-eER" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="9UK-2h-JJF"/>
+                            <constraint firstItem="bsn-5C-G6q" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="80" id="E9G-bC-0pr"/>
+                            <constraint firstItem="bsn-5C-G6q" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Fjd-aw-Mcy"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="ENB-Ui-eER" secondAttribute="bottom" id="VEo-7e-NNr"/>
                             <constraint firstAttribute="trailing" secondItem="ENB-Ui-eER" secondAttribute="trailing" id="YUT-ya-k8e"/>
                         </constraints>
@@ -36,5 +45,6 @@
     </scenes>
     <resources>
         <image name="Group 9" width="375" height="667"/>
+        <image name="Logo" width="105" height="189"/>
     </resources>
 </document>

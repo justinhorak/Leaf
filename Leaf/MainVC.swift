@@ -48,7 +48,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var completeTotalSalesLable: UILabel!
     @IBOutlet weak var totalAdSpendLable: UILabel!
     @IBOutlet weak var roiLabel: UILabel!
-    @IBOutlet weak var productGradeLable: UILabel!
+    
     
     @IBOutlet weak var statView: UIView!
     
@@ -90,7 +90,7 @@ class MainVC: UIViewController {
     }
     
     @IBAction func swipeUp(_ sender: UISwipeGestureRecognizer) {
-        statCalculator()
+        //statCalculator()
         statView.isHidden = false
         
         print("Swipe")
@@ -287,22 +287,22 @@ class MainVC: UIViewController {
             roiLabel.text = percentFormat.string(from: roi as NSNumber)
             print(roi)
             
-            switch roi {
-            case 0.5 ... 100:
-                productGradeLable.text = "A"
-            case 0.4 ... 0.49:
-                productGradeLable.text = "B"
-            case 0.2 ... 0.39:
-                productGradeLable.text = "C"
-            case 0.01 ... 0.19:
-                productGradeLable.text = "D"
-            //case 0.0 ... -0.1000:
-                //productGradeLable.text = "F"
-                default:
-                print("Nothing")
-            }
-            
-            
+//            switch roi {
+//            case 0.5 ... 100:
+//                productGradeLable.text = "A"
+//            case 0.4 ... 0.49:
+//                productGradeLable.text = "B"
+//            case 0.2 ... 0.39:
+//                productGradeLable.text = "C"
+//            case 0.01 ... 0.19:
+//                productGradeLable.text = "D"
+//            //case 0.0 ... -0.1000:
+//                //productGradeLable.text = "F"
+//                default:
+//                print("Nothing")
+//            }
+//            
+//            
             
             
             
