@@ -47,6 +47,7 @@
 		D085505A1DD9572800292FB6 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08550591DD9572800292FB6 /* DataService.swift */; };
 		D085505C1DDA0E4B00292FB6 /* RoundedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D085505B1DDA0E4B00292FB6 /* RoundedButtonView.swift */; };
 		D085505E1DDA7D1500292FB6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D085505D1DDA7D1500292FB6 /* Constants.swift */; };
+		D08550641DDAB05B00292FB6 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08550631DDAB05B00292FB6 /* Product.swift */; };
 		D08A45DD1DD8B0FB00D7EA6B /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08A45DC1DD8B0FB00D7EA6B /* LogInVC.swift */; };
 		D08A45DF1DD8C0E200D7EA6B /* LogSignVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08A45DE1DD8C0E200D7EA6B /* LogSignVC.swift */; };
 		D08A45E51DD8FB6F00D7EA6B /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08A45E41DD8FB6F00D7EA6B /* TestViewController.swift */; };
@@ -103,6 +104,7 @@
 		D08550591DD9572800292FB6 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		D085505B1DDA0E4B00292FB6 /* RoundedButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButtonView.swift; sourceTree = "<group>"; };
 		D085505D1DDA7D1500292FB6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D08550631DDAB05B00292FB6 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		D08A45DC1DD8B0FB00D7EA6B /* LogInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInVC.swift; sourceTree = "<group>"; };
 		D08A45DE1DD8C0E200D7EA6B /* LogSignVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogSignVC.swift; sourceTree = "<group>"; };
 		D08A45E41DD8FB6F00D7EA6B /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				D0B47DFC1DD1078A0075676B /* ScalingBrain.swift */,
+				D08550631DDAB05B00292FB6 /* Product.swift */,
 				D05C542A1DD3D9390040F990 /* Item+CoreDataClass.swift */,
 				D027073C1DCED08700BB06AE /* Generated */,
 			);
@@ -436,6 +439,7 @@
 				D08A45DD1DD8B0FB00D7EA6B /* LogInVC.swift in Sources */,
 				D02707831DCED83600BB06AE /* HoshiTextField.swift in Sources */,
 				D08A45EF1DD8FEC500D7EA6B /* SMSegment.swift in Sources */,
+				D08550641DDAB05B00292FB6 /* Product.swift in Sources */,
 				D0B47DFD1DD1078A0075676B /* ScalingBrain.swift in Sources */,
 				D08A45F21DD8FEC500D7EA6B /* SMSegmentViewConstants.swift in Sources */,
 				D085505A1DD9572800292FB6 /* DataService.swift in Sources */,

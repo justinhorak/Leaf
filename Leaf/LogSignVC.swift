@@ -19,22 +19,6 @@ class LogSignVC: UIViewController {
         super.viewDidLoad()
 
         
-//        FIRAuth.auth()?.addStateDidChangeListener { auth, user in
-//            if let user = user {
-//                self.performSegue(withIdentifier: "userIsLoggedIn", sender: nil)
-//            } else {
-//                // No user is signed in.
-//                print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-//            }
-//        }
-        
-//        if let user = FIRAuth.auth()?.currentUser{
-//            performSegue(withIdentifier: "userIsLoggedIn", sender: nil)
-//            print("?????????????????????????????User logged in ")
-//        }else{
-//            print("User not logged in")
-//        }
-        
     
         
     }
@@ -47,10 +31,7 @@ class LogSignVC: UIViewController {
     }
 
     
-//    func isLoggedIn() -> Bool {
-//        
-//        return UserDefaults.standard.bool(forKey: "isLoggedIn")
-//    }
+
 
  
 
