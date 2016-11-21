@@ -24,32 +24,19 @@ class MainVC: UIViewController {
     let percentFormat = NumberFormatter()
     
     
+    var nextDayBudget = 0.0
     
-    
-    
+    var itemToEdit: Item!
     @IBOutlet weak var nextDayBudgetLabel: UILabel!
     @IBOutlet weak var totalSalesLabel: UILabel!
     @IBOutlet weak var budgetLabel: UILabel!
-    
-    
     @IBOutlet weak var productTitle: UILabel!
-    
     @IBOutlet weak var differenceInBudget: UILabel!
     @IBOutlet weak var arrowImage: UIImageView!
-    var itemToEdit: Item!
-    
-    var nextDayBudget = 0.0
-    
-    
-    
-    //Stats
-    
     @IBOutlet weak var cpaLabel: UILabel!
     @IBOutlet weak var completeTotalSalesLable: UILabel!
     @IBOutlet weak var totalAdSpendLable: UILabel!
     @IBOutlet weak var roiLabel: UILabel!
-    
-    
     @IBOutlet weak var statView: UIView!
     
     override func viewDidLoad() {
@@ -63,13 +50,30 @@ class MainVC: UIViewController {
     }
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @IBAction func swipeLeft(_ sender: UISwipeGestureRecognizer) {
-        let noScale = SCLAlertView.SCLAppearance(
+        let deleteProduct = SCLAlertView.SCLAppearance(
             showCloseButton: false
         )
-        let noScaleView = SCLAlertView(appearance: noScale)
+        let deleteProductView = SCLAlertView(appearance: deleteProduct)
         
-        noScaleView.addButton("Delete"){ () -> Void  in
+        deleteProductView.addButton("Delete"){ () -> Void  in
             if self.itemToEdit != nil{
                 context.delete(self.itemToEdit)
                 ad.saveContext()
@@ -77,23 +81,17 @@ class MainVC: UIViewController {
             }
             
         }
-        
-        noScaleView.addButton("Cancel"){ () -> Void  in
+        deleteProductView.addButton("Cancel"){ () -> Void  in
             self.no()
             
         }
-        
-        noScaleView.showError("Delete \((itemToEdit!.title)!) ?", subTitle: "Deleting this product will also delete its data.")
-        
-        
-        
+        deleteProductView.showError("Delete \((itemToEdit!.title)!) ?", subTitle: "Deleting this product will also delete its data.")
     }
     
     @IBAction func swipeUp(_ sender: UISwipeGestureRecognizer) {
         //statCalculator()
         statView.isHidden = false
-        
-        print("Swipe")
+
     }
     
     
@@ -102,16 +100,7 @@ class MainVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    
-    
-    //    @IBAction func statsButtonPressed(_ sender: UIButton){
-    //
-    //        statView.isHidden = false
-    //        statCalculator()
-    //
-    //
-    //
-    //    }
+
     @IBAction func minusButton(_ sender: UIButton) {
         if itemToEdit.totalSales > 0 {
             salesButtonPressedUpdate(x: -1)
@@ -150,21 +139,6 @@ class MainVC: UIViewController {
         
         alertView.showInfo("Ready to end your Day?", subTitle: " ")
         
-        
-//        let alertController: UIAlertController = UIAlertController(title: "Ready to End your day?", message: " ", preferredStyle: .alert)
-//        
-//        let cancelAction = UIAlertAction(title: "No", style: .cancel) {(action:UIAlertAction) in
-//            
-//            //Do Nothing
-//        }
-//        let yesAction = UIAlertAction(title: "Yes", style: .default) {(action:UIAlertAction) in
-//            self.endDay()
-//        }
-//        
-//        alertController.addAction(cancelAction)
-//        alertController.addAction(yesAction)
-//        
-//        self.present(alertController, animated: true, completion: nil)
         
         
     }
@@ -222,8 +196,6 @@ class MainVC: UIViewController {
             noScaleView.showError("Hold On...", subTitle: "Look's like we should lower the budget. Would you like to update your budget of $\(Int(itemToEdit.budget)) to $\(Int(nextDayBudget))?")
         }
         
-        
-        
     }
     
     
@@ -245,9 +217,6 @@ class MainVC: UIViewController {
     }
     
     func endDayMessageTemplate(titleLine: String, messageLine: String){
-        
-        
-        
         resetSales()
         
         let alertController: UIAlertController = UIAlertController(title: titleLine, message: messageLine, preferredStyle: .alert)

@@ -31,7 +31,18 @@ class LogSignVC: UIViewController {
     }
 
     
+    @IBAction func logInButtonTapped(_ sender: UITapGestureRecognizer) {
+        
+        
+        performSegue(withIdentifier: "LogInButton", sender: nil)
+        
+        
+        
+    }
 
+    @IBAction func createAccountButtonTapped(_ sender: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "SignUpButton", sender: nil)
+    }
 
  
 

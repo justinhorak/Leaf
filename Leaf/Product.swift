@@ -9,15 +9,16 @@
 import Foundation
 import Firebase
 
-class Product {
+class Product: NSObject {
     private var _title: String!
     private var _budget: Double!
     private var _margin: Double!
     private var _todaysSales: Int!
-    private var _totalSales: Int!
+    private var _totalSales: Double!
     private var _totalAdSpend: Double!
     private var _postKey: String!
    private var _postRef: FIRDatabaseReference!
+    
     
     var title: String {
         return _title
@@ -35,7 +36,7 @@ class Product {
         return _todaysSales
     }
     
-    var totalSales: Int {
+    var totalSales: Double {
         return _totalSales
     }
     
@@ -47,11 +48,11 @@ class Product {
         return _postKey
     }
     
-    init(title: String, budget: Double, margin: Double, dailySales: Int, totalSales: Int, totalAdSpend: Double) {
+    init(title: String, budget: Double, margin: Double, dailySales: Int, totalSales: Double, totalAdSpend: Double) {
         self._title = title
         self._budget = budget
         self._margin = margin
-        self._todaysSales = todaysSales
+        self._todaysSales = dailySales
         self._totalSales = totalSales
         self._totalAdSpend = totalAdSpend
     }
@@ -74,7 +75,7 @@ class Product {
         if let todaysSales = postData["todaysSales"] as? Int {
             self._todaysSales = todaysSales
         }
-        if let totalSales = postData["totalSales"] as? Int {
+        if let totalSales = postData["totalSales"] as? Double {
             self._totalSales = totalSales
         }
         if let totalAdSpend = postData["totalAdSpend"] as? Double {

@@ -28,6 +28,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var itemToEdit: Item?
     
     var products = [Product]()
+    var messagesDictionary = [String: Product]()
+    var autoIdArray = [String]()
+    
+    var selectTitle: String?
+    
+    
     
     
     override func viewDidLoad() {
@@ -35,35 +41,59 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.allowsMultipleSelectionDuringEditing = true
         
-        DataService.ds.REF_PRODUCTS.observe(.value, with: { (snapshot) in
+        
+        testFunction()
+        //        let defaults = UserDefaults.standard
+        //        if !defaults.bool(forKey: "haveRanOnce") {
+        //            // First run of app
+        //            // Present your message
+        
+        
+        
+        
+        //            emptyTableMessage!.isHidden = false
+        //            // Update defaults
+        //            defaults.set(true, forKey: "haveRanOnce")
+        //        }
+        
+        //attemptFetch()
+        
+        
+        
+    }
+    
+    func testFunction(){
+        
+        let fromId = FIRAuth.auth()!.currentUser!.uid
+        
+        let userProductRef = FIRDatabase.database().reference().child("users").child(fromId).child("products")
+        
+    
+        
+        userProductRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            self.products = [] // THIS IS THE NEW LINE
+            self.autoIdArray = []
+            
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 for snap in snapshot {
-                    print("SNAP: \(snap)")
+                    //print("SNAP: \(snap)")
                     if let postDict = snap.value as? Dictionary<String, AnyObject> {
                         let key = snap.key
-                        let product = Product(postKey: key, postData: postDict)
-                        self.products.append(product)
+                        let post = Product(postKey: key, postData: postDict)
+                        self.autoIdArray.append(key)
+                        self.products.append(post)
+                        print(self.autoIdArray)
                     }
                 }
             }
             self.tableView.reloadData()
         })
         
-//        let defaults = UserDefaults.standard
-//        if !defaults.bool(forKey: "haveRanOnce") {
-//            // First run of app
-//            // Present your message
-//            emptyTableMessage!.isHidden = false
-//            // Update defaults
-//            defaults.set(true, forKey: "haveRanOnce")
-//        }
         
-        //attemptFetch()
         
     }
-    
-    
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -72,7 +102,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        
+        if products.count != 0{
+            startUpView.isHidden = true
+            print(products.count)
+        }else{
+            startUpView.isHidden = false
+        }
         
         return products.count
     }
@@ -86,260 +121,158 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }else{
             return ItemCell()
         }
-
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if products.count > 0 {
+            
+            _ = products[indexPath.row]
+            selectTitle = self.autoIdArray[indexPath.row]
+            performSegue(withIdentifier: "ScaleVC", sender: nil)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+        
+        
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else{
+            return
+        }
+        
+        var product = self.products[indexPath.row]
+        var autoId = self.autoIdArray[indexPath.row]
+        
+        FIRDatabase.database().reference().child("users").child(uid).child("products").child(String(describing: autoId)).removeValue(completionBlock: { (error, ref) in
+        
+            if error != nil {
+                print("Failed to delete message:", error)
+                return
+            }
+        
+            self.products.remove(at: indexPath.row)
+            self.autoIdArray.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+        
+        })
     }
     
     
     
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ScaleVC" {
+            if let colorViewController = segue.destination as? ScalingVC {
+                colorViewController.productAutoId = selectTitle
+                print("hellllloooooo")
+            }
+        }
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-//    @IBAction func newProductButtonPushed(_ sender: UIButton) {
-//        
-//        
-//        let appearance = SCLAlertView.SCLAppearance(
-//            kTitleFont: UIFont(name: "SFUIDisplay-Thin", size: 20)!,
-//            kTextFont: UIFont(name: "SFUIDisplay-Light", size: 14)!,
-//            kButtonFont: UIFont(name: "SFUIDisplay-Light", size: 14)!,
-//            showCloseButton: false
-//        )
-//        let alertView = SCLAlertView(appearance: appearance)
-//        
-//        
-//        
-//        let txt = alertView.addTextField("Product Name")
-//        txt.textAlignment = .center
-//        txt.keyboardAppearance = UIKeyboardAppearance.dark
-//        
-//        let margin = alertView.addTextField("Product Margin")
-//        margin.keyboardType = UIKeyboardType.numberPad
-//        margin.keyboardAppearance = UIKeyboardAppearance.dark
-//        margin.textAlignment = .center
-//        
-//        let budget = alertView.addTextField("Ad Spend")
-//        budget.keyboardType = UIKeyboardType.numberPad
-//        budget.keyboardAppearance = UIKeyboardAppearance.dark
-//        budget.textAlignment = .center
-//        
-//       
-//        alertView.addButton("Save", backgroundColor: UIColor(red: 0/255, green: 194/255, blue: 148/255, alpha: 1.0))
-//        {
-//            
-//            if txt.text != "" &&  margin.text != "" && budget.text != ""{
-//             
-//                let item = Item(context: context)
-//                
-//                if let title = txt.text{
-//                    item.title = title
-//                    
-//                }
-//                
-//                if let margin = margin.text{
-//                    item.margin = (margin as NSString).doubleValue
-//                    
-//                }
-//                
-//                if let budget = budget.text{
-//                    item.budget = (budget as NSString).doubleValue
-//                    
-//                }
-//                
-//                item.totalDays = 0
-//                item.totalSales = 0
-//                
-//                ad.saveContext()
-//            }
-//            
-//            
-//            
-//            
-//            
-//            
-//        }
-//        
-//            
-//        alertView.addButton("Cancel", backgroundColor: UIColor(red: 254/255, green: 127/255, blue: 131/255, alpha: 1.0)){
-//        }
-//        
-//            
-//            
-//            
-//            
-//            
-//            
-//            alertView.showEdit("Let's Scale", subTitle: "Fill in the Text Fields to get start.")
-//        }
-//        
-//        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//            
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
-//            configureCell(cell: cell, indexPath: indexPath as NSIndexPath)
-//            return cell
-//            return UITableViewCell()
-//        }
-//        
-//        
-//        @IBAction func newItemButtonPushed(_ sender: UIButton) {
-//            emptyTableMessage.isHidden = true
-//            
-//        }
-//        
-//        
-//        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//            if let sections = controller.sections {
-//                let sectionInfo = sections[section]
-//                return sectionInfo.numberOfObjects
-//            }
-//            
-//            return 0
-//        }
-//        
-//        func configureCell(cell: ItemCell, indexPath: NSIndexPath) {
-//            
-//            let item = controller.object(at: indexPath as IndexPath)
-//            cell.configureCell(item: item)
-//            
-//        }
-//        
-//        
-//        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//            
-//            if let objs = controller.fetchedObjects , objs.count > 0 {
-//                
-//                let item = objs[indexPath.row]
-//                performSegue(withIdentifier: "MainVC", sender: item)
-//            }
-//        }
-//        
-//        
-//        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//            if segue.identifier == "MainVC" {
-//                if let destination = segue.destination as? MainVC {
-//                    if let item = sender as? Item {
-//                        destination.itemToEdit = item
-//                    }
-//                }
-//            }
-//            
-//        }
-//        
-//        
-//        func numberOfSections(in tableView: UITableView) -> Int {
-//            
-//            if let sections = controller.sections {
-//                return sections.count
-//                
-//            }
-//            
-//            return 0
-//        }
-//        
-//        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//            return 80
-//        }
-//        
-//        
-//        
-//        func startUpImage(){
-//            
-//            if itemCount == 0 {
-//                emptyTableMessage!.isHidden = false
-//                print("Show Message")
-//            }else{
-//                emptyTableMessage!.isHidden = true
-//                print("Hid Message")
-//            }
-//            
-//        }
-//        
-//        func attemptFetch() {
-//            
-//            let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
-//            let dateSort = NSSortDescriptor(key: "created", ascending: false)
-//            fetchRequest.sortDescriptors = [dateSort]
-//            
-//            
-//            let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-//            
-//            controller.delegate = self
-//            
-//            self.controller = controller
-//            
-//            
-//            do {
-//                
-//                try controller.performFetch()
-//                
-//            } catch {
-//                
-//                let error = error as NSError
-//                print("\(error)")
-//                
-//            }
-//            
-//        }
-//        
-//        
-//        func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//            tableView.beginUpdates()
-//        }
-//        
-//        func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//            tableView.endUpdates()
-//        }
-//        
-//        func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-//            
-//            switch(type) {
-//                
-//            case.insert:
-//                if let indexPath = newIndexPath {
-//                    tableView.insertRows(at: [indexPath], with: .fade)
-//                }
-//                break
-//            case.delete:
-//                if let indexPath = indexPath {
-//                    tableView.deleteRows(at: [indexPath], with: .fade)
-//                }
-//                break
-//            case.update:
-//                if let indexPath = indexPath {
-//                    let cell = tableView.cellForRow(at: indexPath) as! ItemCell
-//                    //configureCell(cell: cell, indexPath: indexPath as NSIndexPath)
-//                }
-//                break
-//            case.move:
-//                if let indexPath = indexPath {
-//                    tableView.deleteRows(at: [indexPath], with: .fade)
-//                }
-//                if let indexPath = newIndexPath {
-//                    tableView.insertRows(at: [indexPath], with: .fade)
-//                }
-//                break
-//                
-//            }
-//        }
-    
+        
+        
+        @IBAction func newProductButtonPushed(_ sender: UIButton) {
+            
+            
+            let appearance = SCLAlertView.SCLAppearance(
+                kTitleFont: UIFont(name: "SFUIDisplay-Thin", size: 20)!,
+                kTextFont: UIFont(name: "SFUIDisplay-Light", size: 14)!,
+                kButtonFont: UIFont(name: "SFUIDisplay-Light", size: 14)!,
+                showCloseButton: false
+            )
+            let alertView = SCLAlertView(appearance: appearance)
+            
+            
+            
+            let txt = alertView.addTextField("Product Name")
+            txt.textAlignment = .center
+            txt.keyboardAppearance = UIKeyboardAppearance.dark
+            
+            let margin = alertView.addTextField("Product Margin")
+            margin.keyboardType = UIKeyboardType.numberPad
+            margin.keyboardAppearance = UIKeyboardAppearance.dark
+            margin.textAlignment = .center
+            
+            let budget = alertView.addTextField("Ad Spend")
+            budget.keyboardType = UIKeyboardType.numberPad
+            budget.keyboardAppearance = UIKeyboardAppearance.dark
+            budget.textAlignment = .center
+            
+            
+            alertView.addButton("Save", backgroundColor: UIColor(red: 59/255, green: 226/255, blue: 135/255, alpha: 1.0))
+            {
+                
+                if txt.text != "" &&  margin.text != "" && budget.text != ""{
+                    
+                    let marginInput = Double(margin.text!)
+                    
+                    let budgetInput = Double(budget.text!)
+                    
+                    let fromId = FIRAuth.auth()!.currentUser!.uid
+                    
+                    
+                    
+                    let post: Dictionary<String, Any> = [
+                        "title": txt.text! as String,
+                        "budget": budgetInput! as Double,
+                        "margin": marginInput! as Double,
+                        "todaysSales": 0 as Int,
+                        "totalAdSpend": 0 as Double,
+                        "totalSales": 0 as Double
+                    ]
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    let firebasePost = DataService.ds.REF_USERS.child(fromId).child("products").childByAutoId()
+                    firebasePost.updateChildValues(post, withCompletionBlock: { (error, ref) in
+                        if error != nil{
+                            print(error)
+                            return
+                        }
+                        
+                    })
+                    
+                    firebasePost.setValue(post)
+                    self.testFunction()
+                    
+                    
+                }
+                
+                
+                
+                
+                
+                
+            }
+            
+            
+            alertView.addButton("Cancel", backgroundColor: UIColor(red: 255/255, green: 108/255, blue: 112/255, alpha: 1.0)){
+            }
+            
+            
+            let icon = UIImage(named:"Logo White")
+            let color = UIColor(red: 255/255, green: 108/255, blue: 112/255, alpha: 1.0)
+
+            _ = alertView.showCustom("Let's Scale", subTitle: "Fill in the Text Fiedls to get started.", color: color, icon: icon!)
+            
+            
+            
+            //alertView.showEdit("Let's Scale", subTitle: "Fill in the Text Fields to get start.")
+        }
+       
+        
         
         
         

@@ -24,7 +24,7 @@ class SignUpVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateSignUpVC()
-        setSignUpButtonColor()
+        //setSignUpButtonColor()
         
        //observeKeyboardNotifications()
         
@@ -81,13 +81,16 @@ class SignUpVC: UIViewController {
             nameCheckMark.isHidden = true
             email.isHidden = true
             password.isHidden = true
+            signUpButton.isEnabled = false
         }else if email.text == ""{
             infoLable.text = "And, your email?"
             email.isHidden = false
             nameCheckMark.isHidden = false
+            signUpButton.isEnabled = false
         }else{
             password.isHidden = false
             infoLable.text = "And a Password."
+            signUpButton.isEnabled = true
         }
 
     }
@@ -121,17 +124,33 @@ class SignUpVC: UIViewController {
     
     
     @IBAction func signInTapped(_ sender: UIButton) {
-        if let emailText = email.text, let passwordText = password.text{
+        if let emailText = email.text, let passwordText = password.text, let nameText = name.text{
                     FIRAuth.auth()?.createUser(withEmail: emailText, password: passwordText, completion: { (user, error) in
                         if error != nil{
-                            if let user = user{
-                                let userData = ["provider": user.providerID]
-                                self.completeSignIn(id: user.uid, userData: userData)
+                            
+                            if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
+                                
+                                switch errCode {
+                                case .errorCodeInvalidEmail:
+                                    self.infoLable.text = "That does look like an email."
+                                    self.infoLable.adjustsFontSizeToFitWidth = true
+                                case .errorCodeEmailAlreadyInUse:
+                                    self.infoLable.text = "Oops, that email is taken."
+                                    self.infoLable.adjustsFontSizeToFitWidth = true
+                                default:
+                                    print("Create User Error: \(error)")
+                                }    
                             }
+           
+                            print("Email has already been used")
 
                         }else{
+                            if let user = user{
+                                let userData = ["provider": user.providerID,"name": nameText, "email": emailText]
+                                self.completeSignIn(id: user.uid, userData: userData)
+                                
+                            }
                             
-                            print("Email has already been used")
                         }
                         
                     })
@@ -144,7 +163,7 @@ class SignUpVC: UIViewController {
         //let keychainResult = KeychainWrapper.setString(id, forKey: KEY_UID)
         let keychainResult = KeychainWrapper.defaultKeychainWrapper.set(id, forKey: KEY_UID)
         print("JESS: Data saved to keychain \(keychainResult)")
-        performSegue(withIdentifier: "SignIn", sender: nil)
+        performSegue(withIdentifier: "isSignedUp", sender: nil)
     }
 
    
